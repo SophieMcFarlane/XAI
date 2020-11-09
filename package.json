@@ -1,0 +1,24 @@
+{
+  "name": "xai",
+  "version": "1.0.0",
+  "description": "Explainable AI System based on movie recommendations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SophieMcFarlane/XAI.git"
+  },
+  "author": "Sophie McFarlane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SophieMcFarlane/XAI/issues"
+  },
+  "homepage": "https://github.com/SophieMcFarlane/XAI#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
