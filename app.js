@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 
 //Loading in the Database
-let db = new sqlite3.Database('./db.sqlite', (err) => {
+let db = new sqlite3.Database('../db.sqlite', (err) => {
     if (err) {
         return console.error(err.message);
     }
