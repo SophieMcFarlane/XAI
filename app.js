@@ -28,7 +28,7 @@ db.serialize(() => {
 
 //Trying to display a query
 app.get('/getData', function(req, res) {
-    db.all('SELECT id, title FROM all_movies WHERE cluster = 0', (error, result) => {
+    db.all('SELECT * FROM all_movies WHERE cluster = 0', (error, result) => {
         res.send(result);
     });
     
