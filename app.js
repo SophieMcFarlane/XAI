@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 
 //Loading in the Database
-let db = new sqlite3.Database('../db.sqlite', (err) => {
+let db = new sqlite3.Database('./db.sqlite', (err) => {
     if (err) {
         return console.error(err.message);
     }
@@ -17,11 +17,11 @@ let db = new sqlite3.Database('../db.sqlite', (err) => {
 
 //Querying the Database
 db.serialize(() => {
-    db.each(`SELECT movieId as id, title as name FROM cleaned_movies`, (err, row) => {
+    db.each(`SELECT id, title FROM all_movies`, (err, row) => {
         if(err){
             console.log(err.message);
         }
-        console.log(row.id + "\t" + row.name);
+        console.log(row.id + "\t" + row.title);
     });
 
 })
