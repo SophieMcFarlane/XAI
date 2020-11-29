@@ -52,13 +52,13 @@
 
         </section>
 
-        <!-- <table>
+        <table>
             <thead>
                 <th>id</th>
                 <th>title</th>
             </thead>
-            <tbody id=""></tbody>
-        </table> -->
+            <tbody id="place-here"></tbody>
+        </table>
 
         <p id=hello></p>
 
@@ -129,7 +129,17 @@
             $(function(){
                 $.get("/getData", function(result){
                     console.log(result);
-                    $('#hello').html(result);
+                    //prints JSON into hello p placeholder
+                    $('#hello').html(JSON.stringify(result));
+                    //Incase you want to put the results in a table
+                    // var obj = result;
+                    // for(var i=0; i<obj.length; i++){
+                    //     var tr="<tr>";
+                    //     var td1="<td>"+obj[i]["id"]+"</td>";
+                    //     var td2="<td>"+obj[i]["title"]+"</td></tr>";
+                    // }
+                    // $("#place-here").append(tr+td1+td2);
+
                 });
             })
         </script>
