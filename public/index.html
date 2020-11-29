@@ -67,7 +67,7 @@
             <!--First Movie-->
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">Movie Numero Uno</h2>
+                    <h2 id=movieTitleOne class="featurette-heading"></h2>
                     <p class="lead">I'm sure this is a great film</p>
                 </div>
                 <div class="col-md-5">
@@ -87,7 +87,7 @@
                     </svg>
                 </div>
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">Movie Numero Dos</h2>
+                    <h2 id=movieTitleTwo class="featurette-heading"></h2>
                     <p class="lead">I'm sure this is a great film</p>
                 </div>
             </div>
@@ -97,7 +97,7 @@
             <!--Third Movie-->
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading">Movie Numero Tres</h2>
+                    <h2 id=movieTitleThree class="featurette-heading"></h2>
                     <p class="lead">I'm sure this is a great film</p>
                 </div>
                 <div class="col-md-5">
@@ -128,9 +128,16 @@
         <script>
             $(function(){
                 $.get("/getData", function(result){
-                    console.log(result);
+
                     //prints JSON into hello p placeholder
                     $('#hello').html(JSON.stringify(result));
+                    
+                    //prints databse query to relevant placeholder
+                    $('#movieTitleOne').html(result[0]["title"] + ' - id: ' +result[0]['id']);
+                    $('#movieTitleTwo').html(result[1]["title"] + ' - id: ' +result[1]['id']);
+                    $('#movieTitleThree').html(result[2]["title"] + ' - id: ' +result[2]['id']);
+
+
                     //Incase you want to put the results in a table
                     // var obj = result;
                     // for(var i=0; i<obj.length; i++){
