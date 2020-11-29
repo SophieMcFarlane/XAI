@@ -26,13 +26,29 @@ db.serialize(() => {
 
 })
 
+//Trying to display a query
+
+app.get('/getData', function(req, res) {
+    console.log('reached app.js');
+    res.send("Hello");
+    // db.serialize(() => {
+    //     db.each(`SELECT id, title FROM all_movies`, (err, row) => {
+    //         if(err){
+    //             console.log(err.message);
+    //         }
+    //         console.log(row.id + "\t" + row.title);
+    //     });
+    
+    // })
+})
+
 //Closing the Database
-db.close( (err) => {
-    if(err){
-        return console.error(err.message);
-    }
-    console.log('Closed the database connection');
-});
+// db.close( (err) => {
+//     if(err){
+//         return console.error(err.message);
+//     }
+//     console.log('Closed the database connection');
+// });
 
 //Exporting the module
 module.exports = app;
