@@ -131,12 +131,12 @@
 
         <script>
             $(function(){
-                $.get("/getData", function(result){
+                $.get("/getCluster4", function(result){
 
                     //prints JSON into hello p placeholder
                     //$('#hello').html(JSON.stringify(result));
                     
-                    //prints databse query to relevant placeholder
+                    //Prints databse query to relevant placeholder
                     //Movie 1 Data
                     $('#m1Title').html(result[0]["title"] + ' - id: ' +result[0]['id']);
                     $('#m1Runtime').html( 'Runtime '+ result[0]["runtime"]+' mins');
