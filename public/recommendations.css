@@ -11,3 +11,7 @@
 .explanation{
     display: none;
 }
+
+.jumbotron{
+    margin-bottom: 0;
+}
