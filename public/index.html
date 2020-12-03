@@ -67,10 +67,10 @@
                         <h5 id=g1m1Title class="card-title"></h5>
                         <h6 id=g1m1Runtime class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rate Here</button>
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtong1m1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rate Here</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <h6 class="dropdown-header">Please rate this film out of 10</h6>
-                            <a class="dropdown-item" type="button">1</a>
+                            <a id=g1m1r1 class="dropdown-item" type="button">1</a>
                             <a class="dropdown-item" type="button">2</a>
                             <a class="dropdown-item" type="button">3</a>
                             <a class="dropdown-item" type="button">4</a>
@@ -550,6 +550,19 @@
                     $('#g5m3Runtime').html( 'Runtime '+ result[2]["runtime"]+' mins');
                 });
             })
+
+            //track user behaviour
+            $(function(){
+                $('#g1m1r1').click(function(){
+                    console.log('I have been clicked');
+                });
+                $.post("/postUserBehaviour", 
+                {
+                    userId: 2, 
+                    button: 'g1m1r1', 
+                    timestamp: 12345
+                });
+            });
    
     
         </script>

@@ -68,6 +68,15 @@ app.get('/getCluster4', function(req, res) {
     });  
 });
 
+app.post('/postUserBehaviour', function(req, res){
+    console.log(req.body.timestamp);
+    db.run('INSERT INTO user_behaviour (userId, button, timestamp) VALUES ($userId, $button, $timestamp)', {
+        $userId: req.body.userId,
+        $button: req.body.button,
+        $timestamp: req.body.timestamp,
+    })
+})
+
 //Closing the Database
 // db.close( (err) => {
 //     if(err){
