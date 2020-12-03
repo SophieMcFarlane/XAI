@@ -1,5 +1,10 @@
-.btn-explanations{
+.btn-explanations-odd{
     float: right;
+    margin-top: 30px;
+}
+
+.btn-explanations-even{
+    float: left;
     margin-top: 30px;
 }
 

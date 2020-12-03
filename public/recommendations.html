@@ -68,7 +68,7 @@
                     <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
                         <image  href="./images/image-placeholder-500x500.jpg"></image>
                     </svg>
-                    <button id=m1btn class="btn btn-secondary btn-explanations" onclick="showExplanation()">See Explanation</button>
+                    <button id=m1btn class="btn btn-secondary btn-explanations-odd">See Explanation</button>
                 </div>
             </div>
             <div id=m1Explanation class="explanation">
@@ -84,6 +84,7 @@
                     <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
                         <image  href="./images/image-placeholder-500x500.jpg"></image>
                     </svg>
+                    <button id=m2btn class="btn btn-secondary btn-explanations-even">See Explanation</button>
                 </div>
                 <div class="col-md-7">
                     <h2 id=m2Title class="featurette-heading"></h2>
@@ -93,6 +94,10 @@
                     <p id=m2AvgVote class="lead"></p>
                     <p id=m2VoteCount class="lead"></p>
                 </div>
+            </div>
+            <div id=m2Explanation class="explanation">
+                Movie 2 Explanation goes here
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <hr class="featurette-divider">
@@ -111,7 +116,12 @@
                     <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
                         <image  href="./images/image-placeholder-500x500.jpg"></image>
                     </svg>
+                    <button id=m3btn class="btn btn-secondary btn-explanations-odd">See Explanation</button>
                 </div>
+            </div>
+            <div id=m3Explanation class="explanation">
+                Movie 3 Explanation goes here
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
         </div>
@@ -211,7 +221,23 @@
                     $('#m1Explanation').toggle(500);
                     //Changes the text of the button everytime it is clicked
                     $(this).text($(this).text() == 'See Explanation' ? 'Hide Explanation' : 'See Explanation');
-                })
+                });
+
+                //Once Movie 2 button is clicked
+                $('#m2btn').click(function(){
+                    //Shows the m1Explanation div
+                    $('#m2Explanation').toggle(500);
+                    //Changes the text of the button everytime it is clicked
+                    $(this).text($(this).text() == 'See Explanation' ? 'Hide Explanation' : 'See Explanation');
+                });
+
+                //Once Movie 3 button is clicked
+                $('#m3btn').click(function(){
+                    //Shows the m1Explanation div
+                    $('#m3Explanation').toggle(500);
+                    //Changes the text of the button everytime it is clicked
+                    $(this).text($(this).text() == 'See Explanation' ? 'Hide Explanation' : 'See Explanation');
+                });
             })
         </script>
 
