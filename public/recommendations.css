@@ -1,2 +1,8 @@
+.btn-explanations{
+    float: right;
+    margin-top: 30px;
+}
 
-
+.explanation{
+    display: none;
+}

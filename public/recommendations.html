@@ -52,8 +52,6 @@
 
         </section>
 
-        <!-- <p id=hello></p> -->
-
         <!--Main Body-->
         <div class=" container bg-light py-5">
             <!--First Movie-->
@@ -70,7 +68,12 @@
                     <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
                         <image  href="./images/image-placeholder-500x500.jpg"></image>
                     </svg>
+                    <button id=m1btn class="btn btn-secondary btn-explanations" onclick="showExplanation()">See Explanation</button>
                 </div>
+            </div>
+            <div id=m1Explanation class="explanation">
+                Movie 1 Explanation goes here
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <hr class="featurette-divider">
@@ -198,6 +201,17 @@
                     // $("#place-here").append(tr+td1+td2);
 
                 });
+            })
+
+            $(function(){
+                //Buttons to see explanations for movies
+                //Once Movie 1 button is clicked
+                $('#m1btn').click(function(){
+                    //Shows the m1Explanation div
+                    $('#m1Explanation').toggle(500);
+                    //Changes the text of the button everytime it is clicked
+                    $(this).text($(this).text() == 'See Explanation' ? 'Hide Explanation' : 'See Explanation');
+                })
             })
         </script>
 
