@@ -553,14 +553,15 @@
 
             //track user behaviour
             $(function(){
+                date = new Date();
                 $('#g1m1r1').click(function(){
                     console.log('I have been clicked');
                 });
                 $.post("/postUserBehaviour", 
                 {
-                    userId: 2, 
+                    userId: 4, 
                     button: 'g1m1r1', 
-                    timestamp: 12345
+                    timestamp: date.getTime()
                 });
             });
    
