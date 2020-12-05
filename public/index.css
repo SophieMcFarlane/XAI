@@ -10,6 +10,22 @@
     float: right;
 }
 
+.group-2-movies{
+    display: none;
+}
+
+.group-3-movies{
+    display: none;
+}
+
+.group-4-movies{
+    display: none;
+}
+
+.group-5-movies{
+    display: none;
+}
+
 .star {
     position: relative;
   
