@@ -72,26 +72,17 @@
                         <h6 id=g1m1Runtime class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <p>
-                            <i id=star1 class="star" type="button"></i>
-                            <i id=star2 class="star" type="button"></i>
-                            <i id=star3 class="star" type="button"></i>
-                            <i id=star4 class="star" type="button"></i>
-                            <i id=star5 class="star" type="button"></i>
+                            <i id=m1star1 class="star" type="button"></i>
+                            <i id=m1star1v2 class="star-v2" type="button"></i>
+                            <i id=m1star2 class="star" type="button"></i>
+                            <i id=m1star2v2 class="star-v2" type="button"></i>
+                            <i id=m1star3 class="star" type="button"></i>
+                            <i id=m1star3v2 class="star-v2" type="button"></i>
+                            <i id=m1star4 class="star" type="button"></i>
+                            <i id=m1star4v2 class="star-v2" type="button"></i>
+                            <i id=m1star5 class="star" type="button"></i>
+                            <i id=m1star5v2 class="star-v2" type="button"></i>
                         </p>
-                        <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtong1m1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rate Here</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <h6 class="dropdown-header">Please rate this film out of 10</h6>
-                            <a id=g1m1r1 class="dropdown-item" type="button">1</a>
-                            <a class="dropdown-item" type="button">2</a>
-                            <a class="dropdown-item" type="button">3</a>
-                            <a class="dropdown-item" type="button">4</a>
-                            <a class="dropdown-item" type="button">5</a>
-                            <a class="dropdown-item" type="button">6</a>
-                            <a class="dropdown-item" type="button">7</a>
-                            <a class="dropdown-item" type="button">8</a>
-                            <a class="dropdown-item" type="button">9</a>
-                            <a class="dropdown-item" type="button">10</a>
-                        </div> -->
                         </div>
                     </div>
                 </div>
@@ -103,20 +94,13 @@
                         <h5 id=g1m2Title class="card-title"></h5>
                         <h6 id=g1m2Runtime class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rate Here</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <h6 class="dropdown-header">Please rate this film out of 10</h6>
-                            <a class="dropdown-item" type="button">1</a>
-                            <a class="dropdown-item" type="button">2</a>
-                            <a class="dropdown-item" type="button">3</a>
-                            <a class="dropdown-item" type="button">4</a>
-                            <a class="dropdown-item" type="button">5</a>
-                            <a class="dropdown-item" type="button">6</a>
-                            <a class="dropdown-item" type="button">7</a>
-                            <a class="dropdown-item" type="button">8</a>
-                            <a class="dropdown-item" type="button">9</a>
-                            <a class="dropdown-item" type="button">10</a>
-                        </div>
+                        <p>
+                            <i id=m2star1 class="star" type="button"></i>
+                            <i id=m2star2 class="star" type="button"></i>
+                            <i id=m2star3 class="star" type="button"></i>
+                            <i id=m2star4 class="star" type="button"></i>
+                            <i id=m2star5 class="star" type="button"></i>
+                        </p>
                         </div>
                     </div>
                 </div>
@@ -128,20 +112,13 @@
                         <h5 id=g1m3Title class="card-title"></h5>
                         <h6 id=g1m3Runtime class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rate Here</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <h6 class="dropdown-header">Please rate this film out of 10</h6>
-                            <a class="dropdown-item" type="button">1</a>
-                            <a class="dropdown-item" type="button">2</a>
-                            <a class="dropdown-item" type="button">3</a>
-                            <a class="dropdown-item" type="button">4</a>
-                            <a class="dropdown-item" type="button">5</a>
-                            <a class="dropdown-item" type="button">6</a>
-                            <a class="dropdown-item" type="button">7</a>
-                            <a class="dropdown-item" type="button">8</a>
-                            <a class="dropdown-item" type="button">9</a>
-                            <a class="dropdown-item" type="button">10</a>
-                        </div>
+                        <p>
+                            <i id=m3star1 class="star" type="button"></i>
+                            <i id=m3star2 class="star" type="button"></i>
+                            <i id=m3star3 class="star" type="button"></i>
+                            <i id=m3star4 class="star" type="button"></i>
+                            <i id=m3star5 class="star" type="button"></i>
+                        </p>
                         </div>
                     </div>
                 </div>
@@ -570,8 +547,7 @@
             $(function(){
                 date = new Date();
                 //Star 1 clicked
-                $('#star1').click(function(){
-                    console.log('I have been clicked');
+                $('#m1star1').click(function(){
                     $.post("/postUserBehaviour", 
                     {
                         userId: 6, 
@@ -579,8 +555,116 @@
                         timestamp: date.getTime()
                     });
                 });
-                
             });
+
+            //Change Colour of stars
+            $(function(){
+                //Star 1 is clicked
+                $('#m1star1').click(function(){
+                    this.style.display = "none";
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                })
+                //Star 1-v2 is clicked
+                $('#m1star1v2').click(function(){
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "none";
+                    document.getElementById("m1star3v2").style.display = "none";
+                    document.getElementById("m1star4v2").style.display = "none";
+                    document.getElementById("m1star5v2").style.display = "none";
+                    document.getElementById("m1star2").style.display = "inline-block";
+                    document.getElementById("m1star3").style.display = "inline-block";
+                    document.getElementById("m1star4").style.display = "inline-block";
+                    document.getElementById("m1star5").style.display = "inline-block";
+                })
+                //Star 2 is clicked
+                $('#m1star2').click(function(){
+                    this.style.display = "none";
+                    document.getElementById("m1star1").style.display = "none";
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                })
+                //Star 2-v2 is clicked
+                $('#m1star2v2').click(function(){
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "none";
+                    document.getElementById("m1star4v2").style.display = "none";
+                    document.getElementById("m1star5v2").style.display = "none";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star3").style.display = "inline-block";
+                    document.getElementById("m1star4").style.display = "inline-block";
+                    document.getElementById("m1star5").style.display = "inline-block";
+                })
+                //Star 3 is clicked
+                $('#m1star3').click(function(){
+                    this.style.display = "none";
+                    document.getElementById("m1star1").style.display = "none";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "inline-block";
+                })
+                //Star 3-v2 is clicked
+                $('#m1star3v2').click(function(){
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "inline-block";
+                    document.getElementById("m1star4v2").style.display = "none";
+                    document.getElementById("m1star5v2").style.display = "none";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star3").style.display = "none";
+                    document.getElementById("m1star4").style.display = "inline-block";
+                    document.getElementById("m1star5").style.display = "inline-block";
+                })
+                //Star 4 is clicked
+                $('#m1star4').click(function(){
+                    this.style.display = "none";
+                    document.getElementById("m1star1").style.display = "none";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star3").style.display = "none";
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "inline-block";
+                    document.getElementById("m1star4v2").style.display = "inline-block";
+                })
+                //Star 4-v2 is clicked
+                $('#m1star4v2').click(function(){
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "inline-block";
+                    document.getElementById("m1star4v2").style.display = "inline-block";
+                    document.getElementById("m1star5v2").style.display = "none";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star3").style.display = "none";
+                    document.getElementById("m1star4").style.display = "none";
+                    document.getElementById("m1star5").style.display = "inline-block";
+                })
+                //Star 5 is clicked
+                $('#m1star5').click(function(){
+                    this.style.display = "none";
+                    document.getElementById("m1star1").style.display = "none";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star3").style.display = "none";
+                    document.getElementById("m1star4").style.display = "none";
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "inline-block";
+                    document.getElementById("m1star4v2").style.display = "inline-block";
+                    document.getElementById("m1star5v2").style.display = "inline-block";
+                })
+                //Star 5-v2 is clicked
+                $('#m1star5v2').click(function(){
+                    document.getElementById("m1star1v2").style.display = "inline-block";
+                    document.getElementById("m1star2v2").style.display = "inline-block";
+                    document.getElementById("m1star3v2").style.display = "inline-block";
+                    document.getElementById("m1star4v2").style.display = "inline-block";
+                    document.getElementById("m1star5v2").style.display = "inline-block";
+                    document.getElementById("m1star2").style.display = "none";
+                    document.getElementById("m1star3").style.display = "none";
+                    document.getElementById("m1star4").style.display = "none";
+                    document.getElementById("m1star5").style.display = "none";
+                })
+            })
    
     
         </script>
