@@ -50,8 +50,12 @@
                 </p>
                 <button class="btn btn-secondary" type='button' value='Get Recommendations' onClick="window.location= './recommendations.html'">Get Recommendations</button>
             </div>
-
         </section>
+
+        <!-- Progress Bar -->
+        <div class="progress w-75">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning w-75" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
 
         <!-- Main Body-->
         <div class=" container bg-light py-5">
@@ -556,13 +560,14 @@
                 date = new Date();
                 $('#g1m1r1').click(function(){
                     console.log('I have been clicked');
-                });
-                $.post("/postUserBehaviour", 
+                    $.post("/postUserBehaviour", 
                 {
                     userId: 4, 
                     button: 'g1m1r1', 
                     timestamp: date.getTime()
                 });
+                });
+                
             });
    
     
