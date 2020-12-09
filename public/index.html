@@ -74,7 +74,7 @@
                             <h6 id=g1m1Runtime class="card-subtitle mb-2 text-muted"></h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <p>
-                                <i class="star m1star1" type="button"></i>
+                                <i id="g1m1s1" class="star m1star1" type="button" onClick="letsTrack(this.id)"></i>
                                 <i class="star-v2 m1star1v2" type="button"></i>
                                 <i class="star m1star2" type="button"></i>
                                 <i class="star-v2 m1star2v2" type="button"></i>
@@ -1035,18 +1035,16 @@
             })
             
             //track user behaviour
-            $(function(){
+            function letsTrack(id) {
                 date = new Date();
-                //Star 1 clicked
-                $('#m1star1').click(function(){
+                    //sends data to database
                     $.post("/postUserBehaviour", 
                     {
-                        userId: 6, 
-                        button: 'star1', 
+                        userId: 1, 
+                        button: id, 
                         timestamp: date.getTime()
                     });
-                });
-            });
+            };
     
         </script>
 
