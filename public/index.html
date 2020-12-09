@@ -367,7 +367,7 @@
                         <h5 id=g4m3Title class="card-title"></h5>
                         <h6 id=g4m3Runtime class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        =<p>
+                        <p>
                             <i class="star m3star1" type="button"></i>
                             <i class="star-v2 m3star1v2" type="button"></i>
                             <i class="star m3star2" type="button"></i>
@@ -964,6 +964,11 @@
 
             //Next group buttons
             $(function() {
+                //Lists of stars
+                var elements = document.getElementsByClassName('star');
+                var elements_v2 = document.getElementsByClassName('star-v2');
+                var length = elements.length;
+
                 //Group 1 next button
                 $('#g1next').click(function(){
                     //Hides group 1 movies
@@ -973,10 +978,6 @@
                     //Updates Progress bar
                     document.getElementById("progressBar").style.width = "40%";
                     //Re-sets stars
-                    var elements = document.getElementsByClassName('m1star1');
-                    var elements_v2 = document.getElementsByClassName('m1star1v2');
-                    var length = elements.length;
-
                     for(var i=0; i<length; i++){
                         elements[i].style.display = "inline-block";
                         elements_v2[i].style.display = "none";
@@ -992,6 +993,12 @@
                     document.getElementsByClassName("group-3-movies")[0].style.display = "inline-block";
                     //Updates Progress bar
                     document.getElementById("progressBar").style.width = "60%";
+                    //Re-sets stars
+                    for(var i=0; i<length; i++){
+                        elements[i].style.display = "inline-block";
+                        elements_v2[i].style.display = "none";
+                        
+                    }
                 })
 
                 //Group 3 next button
@@ -1002,6 +1009,12 @@
                     document.getElementsByClassName("group-4-movies")[0].style.display = "inline-block";
                     //Updates Progress bar
                     document.getElementById("progressBar").style.width = "80%";
+                    //Re-sets stars
+                    for(var i=0; i<length; i++){
+                        elements[i].style.display = "inline-block";
+                        elements_v2[i].style.display = "none";
+                        
+                    }
                 })
 
                 //Group 4 next button
@@ -1012,6 +1025,12 @@
                     document.getElementsByClassName("group-5-movies")[0].style.display = "inline-block";
                     //Updates Progress bar
                     document.getElementById("progressBar").style.width = "100%";
+                    //Re-sets stars
+                    for(var i=0; i<length; i++){
+                        elements[i].style.display = "inline-block";
+                        elements_v2[i].style.display = "none";
+                        
+                    }
                 })
             })
             
