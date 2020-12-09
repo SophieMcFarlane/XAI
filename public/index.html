@@ -74,16 +74,16 @@
                             <h6 id=g1m1Runtime class="card-subtitle mb-2 text-muted"></h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <p>
-                                <i id="g1m1s1" class="star m1star1" type="button" onClick="letsTrack(this.id)"></i>
-                                <i class="star-v2 m1star1v2" type="button"></i>
-                                <i class="star m1star2" type="button"></i>
-                                <i class="star-v2 m1star2v2" type="button"></i>
-                                <i class="star m1star3" type="button"></i>
-                                <i class="star-v2 m1star3v2" type="button"></i>
-                                <i class="star m1star4" type="button"></i>
-                                <i class="star-v2 m1star4v2" type="button"></i>
-                                <i class="star m1star5" type="button"></i>
-                                <i class="star-v2 m1star5v2" type="button"></i>
+                                <i id="g1m1s1" class="star m1star1" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s1v2" class="star-v2 m1star1v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s2" class="star m1star2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s2v2" class="star-v2 m1star2v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s3" class="star m1star3" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s3v2" class="star-v2 m1star3v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s4" class="star m1star4" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s4v2" class="star-v2 m1star4v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s5" class="star m1star5" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m1s5v2" class="star-v2 m1star5v2" type="button" onclick="track(this.id)"></i>
                             </p>
                             </div>
                         </div>
@@ -97,16 +97,16 @@
                             <h6 id=g1m2Runtime class="card-subtitle mb-2 text-muted"></h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <p>
-                                <i class="star m2star1" type="button"></i>
-                                <i class="star-v2 m2star1v2" type="button"></i>
-                                <i class="star m2star2" type="button"></i>
-                                <i class="star-v2 m2star2v2" type="button"></i>
-                                <i class="star m2star3" type="button"></i>
-                                <i class="star-v2 m2star3v2" type="button"></i>
-                                <i class="star m2star4" type="button"></i>
-                                <i class="star-v2 m2star4v2" type="button"></i>
-                                <i class="star m2star5" type="button"></i>
-                                <i class="star-v2 m2star5v2" type="button"></i>
+                                <i id="g1m2s1" class="star m2star1" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s1v2" class="star-v2 m2star1v2" type="button" onclick="(this.id)"></i>
+                                <i id="g1m2s2" class="star m2star2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s2v2" class="star-v2 m2star2v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s3" class="star m2star3" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s3v2" class="star-v2 m2star3v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s4" class="star m2star4" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s4v2" class="star-v2 m2star4v2" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s5" class="star m2star5" type="button" onclick="track(this.id)"></i>
+                                <i id="g1m2s5v2" class="star-v2 m2star5v2" type="button" onclick="track(this.id)"></i>
                             </p>
                             </div>
                         </div>
@@ -403,7 +403,7 @@
                         <h5 id=g5m1Title class="card-title"></h5>
                         <h6 id=g5m1Runtime class="card-subtitle mb-2 text-muted"></h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        =<p>
+                        <p>
                             <i class="star m1star1" type="button"></i>
                             <i class="star-v2 m1star1v2" type="button"></i>
                             <i class="star m1star2" type="button"></i>
@@ -1035,7 +1035,7 @@
             })
             
             //track user behaviour
-            function letsTrack(id) {
+            function track(id) {
                 date = new Date();
                     //sends data to database
                     $.post("/postUserBehaviour", 
