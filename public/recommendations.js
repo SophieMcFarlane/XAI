@@ -103,7 +103,6 @@ function letsTrack(id) {
         //sends data to database
         $.post("/postUserBehaviour", 
         {
-            userId: 1, 
             button: id, 
             timestamp: date.getTime()
         });

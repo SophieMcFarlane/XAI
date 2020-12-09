@@ -2,6 +2,10 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+const {v4: uuidv4} = require('uuid');
+
+var userid = uuidv4();
+
 const sqlite3 = require('sqlite3');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -71,7 +75,7 @@ app.get('/getCluster4', function(req, res) {
 app.post('/postUserBehaviour', function(req, res){
     console.log(req.body.timestamp);
     db.run('INSERT INTO user_behaviour (userId, button, timestamp) VALUES ($userId, $button, $timestamp)', {
-        $userId: req.body.userId,
+        $userId: userid,
         $button: req.body.button,
         $timestamp: req.body.timestamp,
     })

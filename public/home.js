@@ -1,4 +1,7 @@
- console.log('I am here :)');
+import {v4 as uuidv4} from 'uuid';
+
+v4 = require('uuid');
+var user = v4();
 
 //Populate Movies
 $(function(){
@@ -84,7 +87,7 @@ $(function(){
     var length = m1_s1_elements.length;
 
     //Movie 1 Star 1 is clicked
-    $('.m1star1').click(function(){
+    $('.m1star1').onclick(function(){
         for(var i=0; i<length; i++){
             m1_s1_elements[i].style.display = "none";
             m1_s1_elements_v2[i].style.display = "inline-block";
@@ -92,7 +95,7 @@ $(function(){
         }
     })
     //Movie 1 Star 1-v2 is clicked
-    $('.m1star1v2').click(function(){
+    $('.m1star1v2').onclick(function(){
         for(var i=0; i<length; i++){
             m1_s1_elements[i].style.display = "none";
             m1_s1_elements_v2[i].style.display = "inline-block";
@@ -107,7 +110,7 @@ $(function(){
         }
     })
     //Movie 1 Star 2 is clicked
-    $('.m1star2').click(function(){
+    $('.m1star2').onclick(function(){
         for(var i=0; i<length; i++){
             m1_s1_elements[i].style.display = "none";
             m1_s1_elements_v2[i].style.display = "inline-block";
@@ -545,14 +548,3 @@ $(function() {
     })
 })
 
-//track user behaviour
-function track(id) {
-    date = new Date();
-        //sends data to database
-        $.post("/postUserBehaviour", 
-        {
-            userId: 1, 
-            button: id, 
-            timestamp: date.getTime()
-        });
-};
