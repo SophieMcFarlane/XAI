@@ -158,8 +158,8 @@
                             <h6 id=g2m1Runtime class="card-subtitle mb-2 text-muted"></h6>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <p>
-                                <i id=m1star1 class="star m1star1" type="button"></i>
-                                <i id=m1star1v2 class="star-v2 m1star1v2" type="button"></i>
+                                <i id=m1star1 class="star" type="button"></i>
+                                <i id=m1star1v2 class="star-v2" type="button"></i>
                                 <i id=m1star2 class="star" type="button"></i>
                                 <i id=m1star2v2 class="star-v2" type="button"></i>
                                 <i id=m1star3 class="star" type="button"></i>
@@ -581,120 +581,137 @@
 
             //Change Colour of Stars
             $(function(){
+                //Movie 1 star lists
+                var m1_s1_elements = document.getElementsByClassName('m1star1');
+                var m1_s1_elements_v2 = document.getElementsByClassName('m1star1v2');
+                var m1_s2_elements = document.getElementsByClassName('m1star2');
+                var m1_s2_elements_v2 = document.getElementsByClassName('m1star2v2');
+                var m1_s3_elements = document.getElementsByClassName('m1star3');
+                var m1_s3_elements_v2 = document.getElementsByClassName('m1star3v2');
+                var m1_s4_elements = document.getElementsByClassName('m1star4');
+                var m1_s4_elements_v2 = document.getElementsByClassName('m1star4v2');
+                var m1_s5_elements = document.getElementsByClassName('m1star5');
+                var m1_s5_elements_v2 = document.getElementsByClassName('m1star5v2');
+                var length = m1_s1_elements.length;
+
                 //Star 1 is clicked
                 $('.m1star1').click(function(){
-                    //this.style.display = "none";
-                    //document.getElementById("m1star1v2").style.display = "inline-block";
-                    var elements = document.getElementsByClassName('m1star1');
-                    var elements_v2 = document.getElementsByClassName('m1star1v2');
-                    var length = elements.length;
-
                     for(var i=0; i<length; i++){
-                        elements[i].style.display = "none";
-                        elements_v2[i].style.display = "inline-block";
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
                         
                     }
                 })
                 //Star 1-v2 is clicked
-                $('#m1star1v2').click(function(){
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "none";
-                    document.getElementById("m1star3v2").style.display = "none";
-                    document.getElementById("m1star4v2").style.display = "none";
-                    document.getElementById("m1star5v2").style.display = "none";
-                    document.getElementById("m1star2").style.display = "inline-block";
-                    document.getElementById("m1star3").style.display = "inline-block";
-                    document.getElementById("m1star4").style.display = "inline-block";
-                    document.getElementById("m1star5").style.display = "inline-block";
+                $('.m1star1v2').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "inline-block";
+                        m1_s2_elements_v2[i].style.display = "none";
+                        m1_s3_elements[i].style.display = "inline-block";
+                        m1_s3_elements_v2[i].style.display = "none";
+                        m1_s4_elements[i].style.display = "inline-block";
+                        m1_s4_elements_v2[i].style.display = "none";
+                        m1_s5_elements[i].style.display = "inline-block";
+                        m1_s5_elements_v2[i].style.display = "none";
+                    }
                 })
                 //Star 2 is clicked
-                $('#m1star2').click(function(){
-                    this.style.display = "none";
-                    document.getElementById("m1star1").style.display = "none";
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
+                $('.m1star2').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        
+                    }
                 })
                 //Star 2-v2 is clicked
-                $('#m1star2v2').click(function(){
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "none";
-                    document.getElementById("m1star4v2").style.display = "none";
-                    document.getElementById("m1star5v2").style.display = "none";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star3").style.display = "inline-block";
-                    document.getElementById("m1star4").style.display = "inline-block";
-                    document.getElementById("m1star5").style.display = "inline-block";
+                $('.m1star2v2').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        m1_s3_elements[i].style.display = "inline-block";
+                        m1_s3_elements_v2[i].style.display = "none";
+                        m1_s4_elements[i].style.display = "inline-block";
+                        m1_s4_elements_v2[i].style.display = "none";
+                        m1_s5_elements[i].style.display = "inline-block";
+                        m1_s5_elements_v2[i].style.display = "none";
+                    }
                 })
                 //Star 3 is clicked
-                $('#m1star3').click(function(){
-                    this.style.display = "none";
-                    document.getElementById("m1star1").style.display = "none";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "inline-block";
+                $('.m1star3').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        m1_s3_elements[i].style.display = "none";
+                        m1_s3_elements_v2[i].style.display = "inline-block";
+                    }
                 })
                 //Star 3-v2 is clicked
-                $('#m1star3v2').click(function(){
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "inline-block";
-                    document.getElementById("m1star4v2").style.display = "none";
-                    document.getElementById("m1star5v2").style.display = "none";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star3").style.display = "none";
-                    document.getElementById("m1star4").style.display = "inline-block";
-                    document.getElementById("m1star5").style.display = "inline-block";
+                $('.m1star3v2').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        m1_s3_elements[i].style.display = "none";
+                        m1_s3_elements_v2[i].style.display = "inline-block";
+                        m1_s4_elements[i].style.display = "inline-block";
+                        m1_s4_elements_v2[i].style.display = "none";
+                        m1_s5_elements[i].style.display = "inline-block";
+                        m1_s5_elements_v2[i].style.display = "none";
+                    }
                 })
                 //Star 4 is clicked
-                $('#m1star4').click(function(){
-                    this.style.display = "none";
-                    document.getElementById("m1star1").style.display = "none";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star3").style.display = "none";
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "inline-block";
-                    document.getElementById("m1star4v2").style.display = "inline-block";
+                $('.m1star4').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        m1_s3_elements[i].style.display = "none";
+                        m1_s3_elements_v2[i].style.display = "inline-block";
+                        m1_s4_elements[i].style.display = "none";
+                        m1_s4_elements_v2[i].style.display = "inline-block";
+                    }
                 })
                 //Star 4-v2 is clicked
-                $('#m1star4v2').click(function(){
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "inline-block";
-                    document.getElementById("m1star4v2").style.display = "inline-block";
-                    document.getElementById("m1star5v2").style.display = "none";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star3").style.display = "none";
-                    document.getElementById("m1star4").style.display = "none";
-                    document.getElementById("m1star5").style.display = "inline-block";
+                $('.m1star4v2').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        m1_s3_elements[i].style.display = "none";
+                        m1_s3_elements_v2[i].style.display = "inline-block";
+                        m1_s4_elements[i].style.display = "none";
+                        m1_s4_elements_v2[i].style.display = "inline-block";
+                        m1_s5_elements[i].style.display = "inline-block";
+                        m1_s5_elements_v2[i].style.display = "none";
+                    }
                 })
                 //Star 5 is clicked
-                $('#m1star5').click(function(){
-                    this.style.display = "none";
-                    document.getElementById("m1star1").style.display = "none";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star3").style.display = "none";
-                    document.getElementById("m1star4").style.display = "none";
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "inline-block";
-                    document.getElementById("m1star4v2").style.display = "inline-block";
-                    document.getElementById("m1star5v2").style.display = "inline-block";
+                $('.m1star5').click(function(){
+                    for(var i=0; i<length; i++){
+                        m1_s1_elements[i].style.display = "none";
+                        m1_s1_elements_v2[i].style.display = "inline-block";
+                        m1_s2_elements[i].style.display = "none";
+                        m1_s2_elements_v2[i].style.display = "inline-block";
+                        m1_s3_elements[i].style.display = "none";
+                        m1_s3_elements_v2[i].style.display = "inline-block";
+                        m1_s4_elements[i].style.display = "none";
+                        m1_s4_elements_v2[i].style.display = "inline-block";
+                        m1_s5_elements[i].style.display = "none";
+                        m1_s5_elements_v2[i].style.display = "inline-block";
+                    }
                 })
-                //Star 5-v2 is clicked
-                $('#m1star5v2').click(function(){
-                    document.getElementById("m1star1v2").style.display = "inline-block";
-                    document.getElementById("m1star2v2").style.display = "inline-block";
-                    document.getElementById("m1star3v2").style.display = "inline-block";
-                    document.getElementById("m1star4v2").style.display = "inline-block";
-                    document.getElementById("m1star5v2").style.display = "inline-block";
-                    document.getElementById("m1star2").style.display = "none";
-                    document.getElementById("m1star3").style.display = "none";
-                    document.getElementById("m1star4").style.display = "none";
-                    document.getElementById("m1star5").style.display = "none";
-                })
+
             })
 
             //Next group buttons
