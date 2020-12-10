@@ -8,6 +8,29 @@ var userid = uuidv4();
 
 const sqlite3 = require('sqlite3');
 
+var collaborativeFilteringTable = [
+    [5, 1, 0, 0 ,0],
+    [5, 0, 1, 0, 0],
+    [5, 0, 0, 1, 0],
+    [5, 0, 0, 0, 1],
+    [1, 5, 0, 0, 0],
+    [0, 5, 1, 0, 0],
+    [0, 5, 0, 1, 0],
+    [0, 5, 0, 0, 1],
+    [1, 0, 5, 0, 0],
+    [0, 1, 5, 0, 0],
+    [0, 0, 5, 1, 0],
+    [0, 0, 5, 0, 1],
+    [1, 0, 0, 5, 0],
+    [0, 1, 0, 5, 0],
+    [0, 0, 1, 5, 0],
+    [0, 0, 0, 5, 1],
+    [1, 0, 0, 0, 5],
+    [0, 1, 0, 0, 5],
+    [0, 0, 1, 0, 5],
+    [0, 0, 0, 1, 5],
+];
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 
@@ -90,4 +113,5 @@ app.post('/postUserBehaviour', function(req, res){
 // });
 
 //Exporting the module
+
 module.exports = app;
