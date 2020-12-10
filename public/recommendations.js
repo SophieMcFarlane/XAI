@@ -1,7 +1,7 @@
 
 //Populates the movies
 $(function(){
-    $.get("/getCluster4", function(result){
+    $.get("/getAllMovies", function(result){
 
         //prints JSON into hello p placeholder
         //$('#hello').html(JSON.stringify(result));

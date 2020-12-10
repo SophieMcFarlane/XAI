@@ -55,7 +55,7 @@ db.serialize(() => {
 
 //GET Request for all movies
 app.get('/getAllMovies', function(req, res) {
-    db.all('SELECT * FROM all_movies', (error, result) => {
+    db.all('SELECT * FROM all_movies ORDER BY rank', (error, result) => {
         res.send(result);
     });  
 });
