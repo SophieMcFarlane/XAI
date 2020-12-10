@@ -96,14 +96,3 @@ $(function(){
         $(this).text($(this).text() == 'See Explanation' ? 'Hide Explanation' : 'See Explanation');
     });
 })
-
-//track user behaviour
-function letsTrack(id) {
-    date = new Date();
-        //sends data to database
-        $.post("/postUserBehaviour", 
-        {
-            button: id, 
-            timestamp: date.getTime()
-        });
-};
