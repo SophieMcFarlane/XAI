@@ -7,6 +7,7 @@ const {v4: uuidv4} = require('uuid');
 var userid = uuidv4();
 
 const sqlite3 = require('sqlite3');
+const { response } = require('express');
 
 var collaborativeFilteringTable = [
     [5, 1, 0, 0 ,0],
@@ -30,6 +31,8 @@ var collaborativeFilteringTable = [
     [0, 0, 1, 0, 5],
     [0, 0, 0, 1, 5],
 ];
+
+var users = [{username: "Sophie"}, {username: "Soph"}]
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -102,6 +105,17 @@ app.post('/postUserBehaviour', function(req, res){
         $button: req.body.button,
         $timestamp: req.body.timestamp,
     })
+})
+
+//POST request to login
+app.post('/login', function(req, res){
+    for(const key of Object.keys(users)){
+        if (req.body.username === users[key]["username"]){
+            console.log('Logged in');
+            res.send("Logged in as: " + req.body.username);
+        }
+    }
+    res.send("Not a valid user");
 })
 
 //Closing the Database
