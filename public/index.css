@@ -4,10 +4,19 @@
 
 .progress{
     margin: 0 auto;
+    display: none;
+}
+
+.labels{
+    font-size: 20px;
 }
 
 .btn-next{
     float: right;
+}
+
+.group-1-movies{
+    display: none;
 }
 
 .group-2-movies{
