@@ -563,6 +563,10 @@
                         document.getElementById("signupForm").style.display = "none";
                         //Shows group 1 movies
                         document.getElementsByClassName("group-1-movies")[0].style.display = "inline-block";
+                        //Changes jumbotron text
+                        $('#jumbotronText').html("Please rate one movie below by clicking on the stars, and then click 'Next'. If you don't recognise any of the movies, just click 'Next'");
+                        //Shows progress bar
+                        document.getElementsByClassName("progress")[0].style.display="flex";
                     }
                 })
             }
