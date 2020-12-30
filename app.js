@@ -118,6 +118,26 @@ app.post('/login', function(req, res){
     res.send("Not a valid user");
 })
 
+//POST request to sign up
+app.post('/signup', function(req, res){
+    var index = -1;
+    for(const key of Object.keys(users)){
+        if(req.body.username === users[key]["username"]){
+            index = 1;
+        }
+    }
+
+    if(index === -1){
+        for(const key of Object.keys(users)){
+            users.push = {username: req.body.username};
+            res.send("Logged in as: " + req.body.username);
+            console.log(users);
+        }
+    }else{
+        res.status(400).send("User already exists");
+    }
+})
+
 //Closing the Database
 // db.close( (err) => {
 //     if(err){

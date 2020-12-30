@@ -79,7 +79,7 @@
                   </div>
                   <div class="col">
                     <p class="labels">Sign Up</p>
-                    <input id="usernameSignup" type="text" class="form-control form-control-lg" placeholder="Username">
+                    <input id="usernameSignUp" type="text" class="form-control form-control-lg" placeholder="Username">
                     <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
@@ -525,9 +525,8 @@
                 $.post("./login", {
                     username: username,
                 }, function(result){
-                    console.log(result);
                     if(result === "Not a valid user"){
-
+                        console.log(result);
                     }else{
                         //Hides Login form
                         document.getElementById("loginForm").style.display = "none";
@@ -535,12 +534,28 @@
                         document.getElementsByClassName("group-1-movies")[0].style.display = "inline-block";
                     }
                 });
-                    
-                
             };
+
+            //Sign up function
+            function signUp(){
+                var username = $("#usernameSignUp").val();
+                $.post("./signup", {
+                    username: username,
+                }, function(result){
+                    if(result === "Not a valid user"){
+                        console.log(result);
+                    }else{
+                        //Hides Login form
+                        document.getElementById("loginForm").style.display = "none";
+                        //Shows group 1 movies
+                        document.getElementsByClassName("group-1-movies")[0].style.display = "inline-block";
+                    }
+                })
+            }
 
 
             $('#loginForm').on('submit', login);
+            $('#loginForm').on('submit', signUp);
 
             //Populate Movies
             $(function(){
