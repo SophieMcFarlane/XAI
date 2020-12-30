@@ -115,7 +115,7 @@ app.post('/login', function(req, res){
             res.send("Logged in as: " + req.body.username);
         }
     }
-    res.send("Not a valid user");
+    res.send("Not a valid user, please sign up");
 })
 
 //POST request to sign up
@@ -131,10 +131,9 @@ app.post('/signup', function(req, res){
         for(const key of Object.keys(users)){
             users.push = {username: req.body.username};
             res.send("Logged in as: " + req.body.username);
-            console.log(users);
         }
     }else{
-        res.status(400).send("User already exists");
+        res.send("User already exists, please login or sign up using a different username");
     }
 })
 

@@ -68,23 +68,47 @@
         <!-- Main Body-->
         <div class=" container bg-light py-5">
 
-            <!-- Sign in/up form-->
+            <!-- Sign in/up form
             <form id=loginForm>
                 <div class="form-row">
                   <div class="col">
                     <p class="labels">Sign In</p>
                     <input id="usernameLogin" type="text" class="form-control form-control-lg" placeholder="Username">
+                    <small id="loginText" class="form-text text-muted"></small>
                     <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button id="loginButton" class="btn btn-primary" type="submit">Submit</button>
                   </div>
                   <div class="col">
                     <p class="labels">Sign Up</p>
                     <input id="usernameSignUp" type="text" class="form-control form-control-lg" placeholder="Username">
+                    <small id="signupText" class="form-text text-muted"></small>
                     <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button id="signupButton" class="btn btn-primary" type="submit">Submit</button>
                   </div>
                 </div>
-              </form>
+              </form> -->
+
+              <!-- Trying a new form-->
+              <div class="row">
+                  <div class="col">
+                      <form id="loginForm">
+                        <p class="labels">Sign In</p>
+                        <input id="usernameLogin" type="text" class="form-control form-control-lg" placeholder="Username">
+                        <small id="loginText" class="form-text text-muted"></small>
+                        <br>
+                        <button id="loginButton" class="btn btn-primary" type="submit">Submit</button>
+                      </form>
+                  </div>
+                  <div class="col">
+                      <form id=signupForm>
+                        <p class="labels">Sign Up</p>
+                        <input id="usernameSignUp" type="text" class="form-control form-control-lg" placeholder="Username">
+                        <small id="signupText" class="form-text text-muted"></small>
+                        <br>
+                        <button id="signupButton" class="btn btn-primary" type="submit">Submit</button>
+                        </form>
+                  </div>
+              </div>
 
             <!-- Group 1 Movies -->
             <div class="group-1-movies">
@@ -525,11 +549,13 @@
                 $.post("./login", {
                     username: username,
                 }, function(result){
-                    if(result === "Not a valid user"){
+                    if(result === "Not a valid user, please sign up"){
                         console.log(result);
+                        $('#loginText').html(result);
                     }else{
-                        //Hides Login form
+                        //Hides Login and sign up form
                         document.getElementById("loginForm").style.display = "none";
+                        document.getElementById("signupForm").style.display = "none";
                         //Shows group 1 movies
                         document.getElementsByClassName("group-1-movies")[0].style.display = "inline-block";
                     }
@@ -537,16 +563,20 @@
             };
 
             //Sign up function
-            function signUp(){
+            function signUp(e){
+                e.preventDefault();
+                console.log('I have been called');
                 var username = $("#usernameSignUp").val();
                 $.post("./signup", {
                     username: username,
                 }, function(result){
-                    if(result === "Not a valid user"){
+                    if(result === "User already exists, please login or sign up using a different username"){
                         console.log(result);
+                        $('#signupText').html(result);
                     }else{
-                        //Hides Login form
+                        //Hides Login and sign up form
                         document.getElementById("loginForm").style.display = "none";
+                        document.getElementById("signupForm").style.display = "none";
                         //Shows group 1 movies
                         document.getElementsByClassName("group-1-movies")[0].style.display = "inline-block";
                     }
@@ -555,7 +585,7 @@
 
 
             $('#loginForm').on('submit', login);
-            $('#loginForm').on('submit', signUp);
+            $('#signupForm').on('submit', signUp);
 
             //Populate Movies
             $(function(){
