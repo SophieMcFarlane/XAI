@@ -52,8 +52,8 @@
         <section class="jumbotron text-center" style="background-color: white;">
             <div class="container">
                 <h1>Movie Recommender</h1>
-                <p class="lead text-muted">
-                    This is a Movie Recommender system used for an experiment. Please pick a movie below and rate it. Once finished, click the 'Next' button below!
+                <p id="jumbotronText" class="lead text-muted">
+                    Welcome! This is a Movie Recommender system used for an experiment. If you are new please sign up below, if you have been here before then please login!
                 </p>
             </div>
         </section>
@@ -67,26 +67,6 @@
 
         <!-- Main Body-->
         <div class=" container bg-light py-5">
-
-            <!-- Sign in/up form
-            <form id=loginForm>
-                <div class="form-row">
-                  <div class="col">
-                    <p class="labels">Sign In</p>
-                    <input id="usernameLogin" type="text" class="form-control form-control-lg" placeholder="Username">
-                    <small id="loginText" class="form-text text-muted"></small>
-                    <br>
-                    <button id="loginButton" class="btn btn-primary" type="submit">Submit</button>
-                  </div>
-                  <div class="col">
-                    <p class="labels">Sign Up</p>
-                    <input id="usernameSignUp" type="text" class="form-control form-control-lg" placeholder="Username">
-                    <small id="signupText" class="form-text text-muted"></small>
-                    <br>
-                    <button id="signupButton" class="btn btn-primary" type="submit">Submit</button>
-                  </div>
-                </div>
-              </form> -->
 
               <!-- Trying a new form-->
               <div class="row">
@@ -558,6 +538,10 @@
                         document.getElementById("signupForm").style.display = "none";
                         //Shows group 1 movies
                         document.getElementsByClassName("group-1-movies")[0].style.display = "inline-block";
+                        //Changes jumbotron text
+                        $('#jumbotronText').html("Please rate one movie below by clicking on the stars, and then click 'Next'. If you don't recognise any of the movies, just click 'Next'");
+                        //Shows progress bar
+                        document.getElementsByClassName("progress")[0].style.display="flex";
                     }
                 });
             };
