@@ -32,7 +32,8 @@ var collaborativeFilteringTable = [
     [0, 0, 0, 1, 5],
 ];
 
-var users = [{username: "Sophie"}, {username: "Soph"}]
+var users = [{username: "Sophie"}, {username: "Soph"}];
+var username = "";
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -46,15 +47,14 @@ let db = new sqlite3.Database('./db.sqlite', (err) => {
 });
 
 //Querying the Database
-db.serialize(() => {
-    db.each(`SELECT id, title FROM all_movies`, (err, row) => {
-        if(err){
-            console.log(err.message);
-        }
-        console.log(row.id + "\t" + row.title);
-    });
-
-})
+// db.serialize(() => {
+//     db.each(`SELECT id, title FROM all_movies`, (err, row) => {
+//         if(err){
+//             console.log(err.message);
+//         }
+//         console.log(row.id + "\t" + row.title);
+//     });
+// })
 
 //GET Request for all movies
 app.get('/getAllMovies', function(req, res) {
@@ -98,10 +98,43 @@ app.get('/getCluster4', function(req, res) {
     });  
 });
 
+//GET request to get recommendations
+app.get('/getRecommendations', function(req, res){
+    var timeg1 = 0;
+    var timeg2 = 0;
+    var timeg3 = 0;
+    var timeg4 = 0;
+    var timeg5 = 0;
+    db.each('SELECT * FROM user_behaviour ORDER BY timestamp DESC', (error, result) => {
+        var reg1 = /g1/;
+        var reg2 = /g2/;
+        var reg3 = /g3/;
+        var reg4 = /g4/;
+        var reg5 = /g5/;
+        if (result.userId === username && result.timestamp > timeg1 && reg1.test(result.button)){
+            timeg1 = result.timestamp;
+        };
+        if (result.userId === username && result.timestamp > timeg2 && reg2.test(result.button)){
+            timeg2 = result.timestamp;
+        };
+        if (result.userId === username && result.timestamp > timeg3 && reg3.test(result.button)){
+            timeg3 = result.timestamp;
+        };
+        if (result.userId === username && result.timestamp > timeg4 && reg4.test(result.button)){
+            timeg4 = result.timestamp;
+        };
+        if (result.userId === username && result.timestamp > timeg5 && reg5.test(result.button)){
+            timeg5 = result.timestamp;
+        };
+        //res.send(result);
+    })
+})
+
+//POST request to log user behaviour
 app.post('/postUserBehaviour', function(req, res){
     console.log(req.body.timestamp);
     db.run('INSERT INTO user_behaviour (userId, button, timestamp) VALUES ($userId, $button, $timestamp)', {
-        $userId: userid,
+        $userId: username,
         $button: req.body.button,
         $timestamp: req.body.timestamp,
     })
@@ -111,7 +144,7 @@ app.post('/postUserBehaviour', function(req, res){
 app.post('/login', function(req, res){
     for(const key of Object.keys(users)){
         if (req.body.username === users[key]["username"]){
-            console.log('Logged in');
+            username = req.body.username;
             res.send("Logged in as: " + req.body.username);
         }
     }
@@ -129,6 +162,7 @@ app.post('/signup', function(req, res){
 
     if(index === -1){
         for(const key of Object.keys(users)){
+            username = req.body.username;
             users.push = {username: req.body.username};
             res.send("Logged in as: " + req.body.username);
         }
