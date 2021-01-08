@@ -22,6 +22,7 @@ $(function(){
         }
         $('#m1AvgVote').html( 'Average Rating: ' + result[0]["vote_average"] + '/10');
         $('#m1VoteCount').html('Number of Ratings: ' + result[0]["vote_count"]);
+        $('#m1Description').html(result[0]["description"]);
         $('#m1Image').attr("href", result[0]["imageURL"]);
 
         //Movie 2 Data
@@ -39,6 +40,7 @@ $(function(){
         }
         $('#m2AvgVote').html( 'Average Rating: ' + result[1]["vote_average"] + '/10');
         $('#m2VoteCount').html('Number of Ratings: ' + result[1]["vote_count"]);
+        $('#m2Description').html(result[1]["description"]);
         $('#m2Image').attr("href", result[1]["imageURL"]);
 
         //Movie 3 Data
@@ -56,6 +58,7 @@ $(function(){
         }
         $('#m3AvgVote').html( 'Average Rating: ' + result[2]["vote_average"] + '/10');
         $('#m3VoteCount').html('Number of Ratings: ' + result[2]["vote_count"]);
+        $('#m3Description').html(result[2]["description"]);
         $('#m3Image').attr("href", result[2]["imageURL"]);
 
 
