@@ -160,23 +160,23 @@ app.get('/getRecommendations', function(req, res){
         }
         //Send the cluster that was rated highest
         if(highestRatedIndex == 0){
-            db.all('SELECT * FROM cluster1_edited ORDER BY rank DESC', (error, result) => {
+            db.all('SELECT * FROM cluster0_edited ORDER BY rank DESC', (error, result) => {
                 res.send(result);
             });
         }else if(highestRatedIndex == 1){
-            db.all('SELECT * FROM cluster2_edited ORDER BY rank DESC', (error, result) => {
+            db.all('SELECT * FROM cluster1_edited ORDER BY rank DESC', (error, result) => {
                 res.send(result);
             });
         }else if(highestRatedIndex == 2){
-            db.all('SELECT * FROM cluster3_edited ORDER BY rank DESC', (error, result) => {
+            db.all('SELECT * FROM cluster2_edited ORDER BY rank DESC', (error, result) => {
                 res.send(result);
             });
         }else if(highestRatedIndex == 3){
-            db.all('SELECT * FROM cluster4_edited ORDER BY rank DESC', (error, result) => {
+            db.all('SELECT * FROM cluster3_edited ORDER BY rank DESC', (error, result) => {
                 res.send(result);
             });
         }else if(highestRatedIndex == 4){
-            db.all('SELECT * FROM cluster5_edited ORDER BY rank DESC', (error, result) => {
+            db.all('SELECT * FROM cluster4_edited ORDER BY rank DESC', (error, result) => {
                 res.send(result);
             });
         }
