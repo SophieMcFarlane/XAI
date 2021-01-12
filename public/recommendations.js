@@ -1,6 +1,8 @@
 
 //Populates the movies
 $(function(){
+    var e = 0.3;
+    var randomGreedy = Math.random();
     $.get("/getRecommendations", function(result){
         console.log(result);
         var random = Math.floor(Math.random() * (6));
@@ -44,23 +46,47 @@ $(function(){
         $('#m2Description').html(result[random+1]["description"]);
         $('#m2Image').attr("href", result[random+1]["imageURL"]);
 
-        //Movie 3 Data
-        $('#m3Title').html(result[random+2]["title"] + ' - id: ' +result[random+2]['id']);
-        $('#m3Runtime').html( 'Runtime '+ result[random+2]["runtime"]+' mins');
-        if(result[random+2]["budget"] == 0){
-            $('#m3Budget').html('Budget: Unknown');
-        }else{
-            $('#m3Budget').html('Budget: ' + result[random+2]["budget"])
-        }
-        if(result[random+2]["revenue"] == 0){
-            $('#m3Revenue').html('Revenue: Unknown');
-        }else{
-            $('#m3Revenue').html('Revenue: ' + result[random+2]["revenue"]);
-        }
-        $('#m3AvgVote').html( 'Average Rating: ' + result[random+2]["vote_average"] + '/10');
-        $('#m3VoteCount').html('Number of Ratings: ' + result[random+2]["vote_count"]);
-        $('#m3Description').html(result[random+2]["description"]);
-        $('#m3Image').attr("href", result[random+2]["imageURL"]);
+
+       if(randomGreedy < e){
+            //Movie 3 Data
+            $('#m3Title').html(result[random+2]["title"] + ' - id: ' +result[random+2]['id']);
+            $('#m3Runtime').html( 'Runtime '+ result[random+2]["runtime"]+' mins');
+            if(result[random+2]["budget"] == 0){
+                $('#m3Budget').html('Budget: Unknown');
+            }else{
+                $('#m3Budget').html('Budget: ' + result[random+2]["budget"])
+            }
+            if(result[random+2]["revenue"] == 0){
+                $('#m3Revenue').html('Revenue: Unknown');
+            }else{
+                $('#m3Revenue').html('Revenue: ' + result[random+2]["revenue"]);
+            }
+            $('#m3AvgVote').html( 'Average Rating: ' + result[random+2]["vote_average"] + '/10');
+            $('#m3VoteCount').html('Number of Ratings: ' + result[random+2]["vote_count"]);
+            $('#m3Description').html(result[random+2]["description"]);
+            $('#m3Image').attr("href", result[random+2]["imageURL"]);
+       }else{
+           $.get('/getAllMovies', function(result){
+               //Movie 3 Data
+                $('#m3Title').html(result[random]["title"] + ' - id: ' +result[random]['id']);
+                $('#m3Runtime').html( 'Runtime '+ result[random]["runtime"]+' mins');
+                if(result[random]["budget"] == 0){
+                    $('#m3Budget').html('Budget: Unknown');
+                }else{
+                    $('#m3Budget').html('Budget: ' + result[random]["budget"])
+                }
+                if(result[random]["revenue"] == 0){
+                    $('#m3Revenue').html('Revenue: Unknown');
+                }else{
+                    $('#m3Revenue').html('Revenue: ' + result[random]["revenue"]);
+                }
+                $('#m3AvgVote').html( 'Average Rating: ' + result[random]["vote_average"] + '/10');
+                $('#m3VoteCount').html('Number of Ratings: ' + result[random]["vote_count"]);
+                $('#m3Description').html(result[random]["description"]);
+                $('#m3Image').attr("href", result[random]["imageURL"]);
+           })
+
+       }
 
 
 
