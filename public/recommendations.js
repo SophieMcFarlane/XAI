@@ -41,8 +41,8 @@ $(function(){
         }
         $('#m2AvgVote').html( 'Average Rating: ' + result[random+1]["vote_average"] + '/10');
         $('#m2VoteCount').html('Number of Ratings: ' + result[random+1]["vote_count"]);
-        $('#m2Description').html(result[1]["description"]);
-        $('#m2Image').attr("href", result[1]["imageURL"]);
+        $('#m2Description').html(result[random+1]["description"]);
+        $('#m2Image').attr("href", result[random+1]["imageURL"]);
 
         //Movie 3 Data
         $('#m3Title').html(result[random+2]["title"] + ' - id: ' +result[random+2]['id']);
