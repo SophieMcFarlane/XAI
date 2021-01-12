@@ -47,7 +47,7 @@
     margin-bottom: 1.2em;
   
     border-right: 0.3em solid transparent;
-    border-bottom: 0.7em solid #fc0;
+    border-bottom: 0.7em solid #e8e8e8;
     border-left: 0.3em solid transparent;
   
     /* Controlls the size of the stars. */
@@ -66,7 +66,7 @@
       left: -1em;
   
       border-right: 1em solid transparent;
-      border-bottom: 0.7em solid #fc0;
+      border-bottom: 0.7em solid #e8e8e8;
       border-left: 1em solid transparent;
   
       transform: rotate(-35deg);
@@ -88,7 +88,7 @@
     margin-bottom: 1.2em;
   
     border-right: 0.3em solid transparent;
-    border-bottom: 0.7em solid #f59622;
+    border-bottom: 0.7em solid #fc0;
     border-left: 0.3em solid transparent;
   
     /* Controlls the size of the stars. */
@@ -107,7 +107,7 @@
       left: -1em;
   
       border-right: 1em solid transparent;
-      border-bottom: 0.7em solid #f59622;
+      border-bottom: 0.7em solid #fc0;
       border-left: 1em solid transparent;
   
       transform: rotate(-35deg);
