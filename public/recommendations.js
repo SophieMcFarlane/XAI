@@ -47,6 +47,7 @@ $(function(){
         $('#m2Image').attr("href", result[random+1]["imageURL"]);
 
         //Seeing if it should explore with probability e
+        //Don't Explore
        if(randomGreedy > e){
             //Movie 3 Data
             $('#m3Title').html(result[random+2]["title"] + ' - id: ' +result[random+2]['id']);
@@ -65,6 +66,7 @@ $(function(){
             $('#m3VoteCount').html('Number of Ratings: ' + result[random+2]["vote_count"]);
             $('#m3Description').html(result[random+2]["description"]);
             $('#m3Image').attr("href", result[random+2]["imageURL"]);
+        //Explore
        }else{
            $.get('/getAllMovies', function(result){
                //Movie 3 Data
@@ -143,6 +145,7 @@ $(function(){
             }else{
                 title = "Boyka: Undisputed IV";
             }
+        //Group 5 Movie
         }else if(result[result.length-1]["button"].charAt(1) == 5){
             if(result[result.length-1]["button"].charAt(3) == 1){
                 title = "Minions";
@@ -152,6 +155,7 @@ $(function(){
                 title = "Beauty and the Beast";
             }
         }
+        //Adding explanation to webpage
         var explanation = `This movie was chosen as you ranked ` + title + ` with ` + stars + ` stars. This movie was seen as similar based on budget, popularity, revenue, vote average and number of votes.`
         $('#m1Explanation').html(explanation);
         $('#m2Explanation').html(explanation);

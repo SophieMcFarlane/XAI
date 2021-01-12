@@ -185,22 +185,27 @@ app.get('/getRecommendations', function(req, res){
 
 //GET Request to get movie ratings
 app.get('/getRatings', function(req, res){
+    //Sends all g1 buttons pressed
     if(highestRatedIndex == 0){
         db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g1%'", (error, result) => {
             res.send(result);
         })
+    //Sends all g2 buttons pressed
     }else if(highestRatedIndex == 1){
         db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g2%'", (error, result) => {
             res.send(result);
         })
+    //Sends all g3 buttons pressed
     }else if(highestRatedIndex == 2){
         db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g3%'", (error, result) => {
             res.send(result);
         })
+    //Sends all g4 buttons pressed
     }else if(highestRatedIndex == 3){
         db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g4%'", (error, result) => {
             res.send(result);
         })
+    //Sends all g5 buttons pressed
     }else if(highestRatedIndex == 4){
         db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g5%'", (error, result) => {
             res.send(result);
