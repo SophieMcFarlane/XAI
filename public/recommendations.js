@@ -46,8 +46,8 @@ $(function(){
         $('#m2Description').html(result[random+1]["description"]);
         $('#m2Image').attr("href", result[random+1]["imageURL"]);
 
-
-       if(randomGreedy < e){
+        //Seeing if it should explore with probability e
+       if(randomGreedy > e){
             //Movie 3 Data
             $('#m3Title').html(result[random+2]["title"] + ' - id: ' +result[random+2]['id']);
             $('#m3Runtime').html( 'Runtime '+ result[random+2]["runtime"]+' mins');
@@ -85,7 +85,6 @@ $(function(){
                 $('#m3Description').html(result[random]["description"]);
                 $('#m3Image').attr("href", result[random]["imageURL"]);
            })
-
        }
 
 
@@ -101,6 +100,63 @@ $(function(){
         // $("#place-here").append(tr+td1+td2);
 
     });
+
+    //GET Reuquest to get user ratings for explanations
+    $.get('/getRatings', function(result){
+        //Number of stars given
+        var stars = result[result.length-1]["button"].charAt(5);
+        var title = "";
+        //Group 1 Movie
+        if(result[result.length-1]["button"].charAt(1) == 1){
+            if(result[result.length-1]["button"].charAt(3) == 1){
+                title = "Blade Runner";
+            }else if(result[result.length-1]["button"].charAt(3) == 2){
+                title = "What Happened to Monday";
+            }else{
+                title = "Whiplash";
+            }
+        //Group 2 Movie
+        }else if(result[result.length-1]["button"].charAt(1) == 2){
+            if(result[result.length-1]["button"].charAt(3) == 1){
+                title = "The Circle";
+            }else if(result[result.length-1]["button"].charAt(3) == 2){
+                title = "The Bad Batch";
+            }else{
+                title = "Wish Upon";
+            }
+        //Group 3 Movie
+        }else if(result[result.length-1]["button"].charAt(1) == 3){
+            if(result[result.length-1]["button"].charAt(3) == 1){
+                title = "Baby Driver";
+            }else if(result[result.length-1]["button"].charAt(3) == 2){
+                title = "John Wick";
+            }else{
+                title = "Alien: Covenant";
+            }
+        //Group 4 Movie
+        }else if(result[result.length-1]["button"].charAt(1) == 4){
+            if(result[result.length-1]["button"].charAt(3) == 1){
+                title = "Captain Underpants: The First Epic Movie";
+            }else if(result[result.length-1]["button"].charAt(3) == 2){
+                title = "Self/less";
+            }else{
+                title = "Boyka: Undisputed IV";
+            }
+        }else if(result[result.length-1]["button"].charAt(1) == 5){
+            if(result[result.length-1]["button"].charAt(3) == 1){
+                title = "Minions";
+            }else if(result[result.length-1]["button"].charAt(3) == 2){
+                title = "Wonder Woman";
+            }else{
+                title = "Beauty and the Beast";
+            }
+        }
+        var explanation = `This movie was chosen as you ranked ` + title + ` with ` + stars + ` stars. This movie was seen as similar based on budget, popularity, revenue, vote average and number of votes.`
+        $('#m1Explanation').html(explanation);
+        $('#m2Explanation').html(explanation);
+        $('#m3Explanation').html(explanation);
+    })
+
 })
 
 // $(function() {

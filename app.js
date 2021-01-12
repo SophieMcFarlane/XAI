@@ -34,6 +34,7 @@ var collaborativeFilteringTable = [
 
 var users = [{username: "Sophie"}, {username: "Soph"}];
 var username = "";
+var highestRatedIndex = 0;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -150,7 +151,6 @@ app.get('/getRecommendations', function(req, res){
     }, (error, numberofRows) => {
         //Only gets called onced after all the above rows have been checked
         var highestRated = 0;
-        var highestRatedIndex = 0;
         //Find the highest rated group
         for (var i=0; i<5; i++){
             if(userRatings[i] > highestRated){
@@ -182,6 +182,31 @@ app.get('/getRecommendations', function(req, res){
         }
     })
 })
+
+//GET Request to get movie ratings
+app.get('/getRatings', function(req, res){
+    if(highestRatedIndex == 0){
+        db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g1%'", (error, result) => {
+            res.send(result);
+        })
+    }else if(highestRatedIndex == 1){
+        db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g2%'", (error, result) => {
+            res.send(result);
+        })
+    }else if(highestRatedIndex == 2){
+        db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g3%'", (error, result) => {
+            res.send(result);
+        })
+    }else if(highestRatedIndex == 3){
+        db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g4%'", (error, result) => {
+            res.send(result);
+        })
+    }else if(highestRatedIndex == 4){
+        db.all("SELECT * FROM user_behaviour WHERE button LIKE '%g5%'", (error, result) => {
+            res.send(result);
+        })
+    }
+}) 
 
 //POST request to log user behaviour
 app.post('/postUserBehaviour', function(req, res){
