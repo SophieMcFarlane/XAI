@@ -225,29 +225,33 @@ app.post('/postUserBehaviour', function(req, res){
 
 //POST request to login
 app.post('/login', function(req, res){
-    for(const key of Object.keys(users)){
-        if (req.body.username === users[key]["username"]){
-            username = req.body.username;
-            res.send("Logged in as: " + req.body.username);
+    //Ask database for list of all users
+    db.all('SELECT username FROM users', (error, result) => {
+        var index = -1;
+        //Run through the usernames to see if it already exists
+        for(var i=0; i<result.length-1; i++){
+            //If it exists, logs in
+            if(req.body.username === result[i].username){
+                index = 1;
+                res.send("Logged in as: " + req.body.username);
+                break;
+            }
         }
-    }
-    res.send("Not a valid user, please sign up");
+        //If it doesn't exist, asks to sign up
+        if(index === -1){
+            res.send("Not a valid user, please sign up");
+        }
+        
 })
+    })
+    
 
 //POST request to sign up
 app.post('/signup', function(req, res){
     var index = -1;
-    // for(const key of Object.keys(users)){
-    //     if(req.body.username === users[key]["username"]){
-    //         index = 1;
-    //     }
-    // }
     db.all('SELECT username FROM users', (error, result) => {
         for(var i=0; i<result.length-1; i++){
-            console.log('req: ' + req.body.username);
-            console.log('database: '+ result[i].username);
             if(req.body.username === result[i].username){
-                console.log('We are the same');
                 index = 1;
             }
         }
