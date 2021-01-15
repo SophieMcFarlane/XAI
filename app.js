@@ -249,13 +249,16 @@ app.post('/login', function(req, res){
 //POST request to sign up
 app.post('/signup', function(req, res){
     var index = -1;
+    //Ask database for list of all users
     db.all('SELECT username FROM users', (error, result) => {
+        //Run through the usernames to see if it already exists
         for(var i=0; i<result.length-1; i++){
+            //If it exits set index to 1
             if(req.body.username === result[i].username){
                 index = 1;
             }
         }
-
+        //If it doesnt exist, add to users table
         if(index === -1){
             username = req.body.username;
             db.run('INSERT INTO users (username, gender, age) VALUES ($username, $gender, $age)', {
