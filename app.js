@@ -237,21 +237,35 @@ app.post('/login', function(req, res){
 //POST request to sign up
 app.post('/signup', function(req, res){
     var index = -1;
-    for(const key of Object.keys(users)){
-        if(req.body.username === users[key]["username"]){
-            index = 1;
+    // for(const key of Object.keys(users)){
+    //     if(req.body.username === users[key]["username"]){
+    //         index = 1;
+    //     }
+    // }
+    db.all('SELECT username FROM users', (error, result) => {
+        for(var i=0; i<result.length-1; i++){
+            console.log('req: ' + req.body.username);
+            console.log('database: '+ result[i].username);
+            if(req.body.username === result[i].username){
+                console.log('We are the same');
+                index = 1;
+            }
         }
-    }
 
-    if(index === -1){
-        for(const key of Object.keys(users)){
+        if(index === -1){
             username = req.body.username;
-            users.push = {username: req.body.username};
+            db.run('INSERT INTO users (username, gender, age) VALUES ($username, $gender, $age)', {
+                $username: username,
+                $gender: req.body.gender,
+                $age: req.body.age,
+            })
             res.send("Logged in as: " + req.body.username);
+        }else{
+            res.send("User already exists, please login or sign up using a different username");
         }
-    }else{
-        res.send("User already exists, please login or sign up using a different username");
-    }
+    })
+
+    
 })
 
 //Closing the Database
