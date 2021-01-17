@@ -42,6 +42,8 @@ var genderAgeTable = [
 
 var users = [{username: "Sophie"}, {username: "Soph"}];
 var username = "";
+var age = "";
+var gender = "";
 var highestRatedIndex = 0;
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -203,76 +205,82 @@ app.get('/getRecommendations2', function(req, res){
     var group4Rating = 0;
     var group5Rating = 0;
     var userRatings = [];
-    //Gets called for each row
-    db.each('SELECT * FROM user_behaviour ORDER BY timestamp DESC', (error, result) => {
-        //Regex expressions to match the buttons
-        var reg1 = /g1/;
-        var reg2 = /g2/;
-        var reg3 = /g3/;
-        var reg4 = /g4/;
-        var reg5 = /g5/;
-        //Find the latest button from g1 movies that has been clicked
-        if (result.userId === username && result.timestamp > timeg1 && reg1.test(result.button)){
-            timeg1 = result.timestamp;
-            group1Rating = result.button.charAt(5);
-        };
-        //Find the latest button from g2 movies that has been clicked
-        if (result.userId === username && result.timestamp > timeg2 && reg2.test(result.button)){
-            timeg2 = result.timestamp;
-            group2Rating = result.button.charAt(5);
-        };
-        //Find the latest button from g3 movies that has been clicked
-        if (result.userId === username && result.timestamp > timeg3 && reg3.test(result.button)){
-            timeg3 = result.timestamp;
-            group3Rating = result.button.charAt(5);
-        };
-        //Find the latest button from g4 movies that has been clicked
-        if (result.userId === username && result.timestamp > timeg4 && reg4.test(result.button)){
-            timeg4 = result.timestamp;
-            group4Rating = result.button.charAt(5);
-        };
-        //Find the latest button from g5 movies that has been clicked
-        if (result.userId === username && result.timestamp > timeg5 && reg5.test(result.button)){
-            timeg5 = result.timestamp;
-            group5Rating = result.button.charAt(5);
-        };
-        //Creates a list of all the ratings for each group
-        userRatings = [group1Rating, group2Rating, group3Rating, group4Rating, group5Rating];
+    db.all('SELECT * FROM users WHERE username = $user', {$user: username},(error2, resultUsers) => {
+        age = resultUsers[0].age;
+        gender = resultUsers[0].gender;
 
-    }, (error, numberofRows) => {
-        //Only gets called onced after all the above rows have been checked
-        var highestRated = 0;
-        //Find the highest rated group
-        for (var i=0; i<5; i++){
-            if(userRatings[i] > highestRated){
-                highestRated = userRatings[i];
-                highestRatedIndex = i;
+        //Gets called for each row
+        db.each('SELECT * FROM user_behaviour ORDER BY timestamp DESC', (error, result) => {
+            //Regex expressions to match the buttons
+            var reg1 = /g1/;
+            var reg2 = /g2/;
+            var reg3 = /g3/;
+            var reg4 = /g4/;
+            var reg5 = /g5/;
+            //Find the latest button from g1 movies that has been clicked
+            if (result.userId === username && result.timestamp > timeg1 && reg1.test(result.button)){
+                timeg1 = result.timestamp;
+                group1Rating = result.button.charAt(5);
+            };
+            //Find the latest button from g2 movies that has been clicked
+            if (result.userId === username && result.timestamp > timeg2 && reg2.test(result.button)){
+                timeg2 = result.timestamp;
+                group2Rating = result.button.charAt(5);
+            };
+            //Find the latest button from g3 movies that has been clicked
+            if (result.userId === username && result.timestamp > timeg3 && reg3.test(result.button)){
+                timeg3 = result.timestamp;
+                group3Rating = result.button.charAt(5);
+            };
+            //Find the latest button from g4 movies that has been clicked
+            if (result.userId === username && result.timestamp > timeg4 && reg4.test(result.button)){
+                timeg4 = result.timestamp;
+                group4Rating = result.button.charAt(5);
+            };
+            //Find the latest button from g5 movies that has been clicked
+            if (result.userId === username && result.timestamp > timeg5 && reg5.test(result.button)){
+                timeg5 = result.timestamp;
+                group5Rating = result.button.charAt(5);
+            };
+            //Creates a list of all the ratings for each group
+            userRatings = [group1Rating, group2Rating, group3Rating, group4Rating, group5Rating];
+
+        }, (error, numberofRows) => {
+            //Only gets called onced after all the above rows have been checked
+            
+            var highestRated = 0;
+            //Find the highest rated group
+            for (var i=0; i<5; i++){
+                if(userRatings[i] > highestRated){
+                    highestRated = userRatings[i];
+                    highestRatedIndex = i;
+                }
             }
-        }
-        //Send the cluster that was rated highest
-        if(highestRatedIndex == 0){
-            db.all('SELECT * FROM cluster0_edited ORDER BY rank DESC', (error, result) => {
-                res.send(result);
-            });
-        }else if(highestRatedIndex == 1){
-            db.all('SELECT * FROM cluster1_edited ORDER BY rank DESC', (error, result) => {
-                res.send(result);
-            });
-        }else if(highestRatedIndex == 2){
-            db.all('SELECT * FROM cluster2_edited ORDER BY rank DESC', (error, result) => {
-                res.send(result);
-            });
-        }else if(highestRatedIndex == 3){
-            db.all('SELECT * FROM cluster3_edited ORDER BY rank DESC', (error, result) => {
-                res.send(result);
-            });
-        }else if(highestRatedIndex == 4){
-            db.all('SELECT * FROM cluster4_edited ORDER BY rank DESC', (error, result) => {
-                res.send(result);
-            });
-        }
+            //Send the cluster that was rated highest
+            if(highestRatedIndex == 0){
+                db.all('SELECT * FROM cluster0_edited ORDER BY rank DESC', (error, result) => {
+                    res.send(result);
+                });
+            }else if(highestRatedIndex == 1){
+                db.all('SELECT * FROM cluster1_edited ORDER BY rank DESC', (error, result) => {
+                    res.send(result);
+                });
+            }else if(highestRatedIndex == 2){
+                db.all('SELECT * FROM cluster2_edited ORDER BY rank DESC', (error, result) => {
+                    res.send(result);
+                });
+            }else if(highestRatedIndex == 3){
+                db.all('SELECT * FROM cluster3_edited ORDER BY rank DESC', (error, result) => {
+                    res.send(result);
+                });
+            }else if(highestRatedIndex == 4){
+                db.all('SELECT * FROM cluster4_edited ORDER BY rank DESC', (error, result) => {
+                    res.send(result);
+                });
+            }
+        })
     })
-    getUserInfo();
+    
 })
 
 //GET Request to get movie ratings
@@ -323,10 +331,7 @@ app.post('/login', function(req, res){
         //Run through the usernames to see if it already exists
         for(var i=0; i<result.length; i++){
             //If it exists, logs in
-            console.log('body: ' + req.body.username);
-            console.log('database: ' + result[i].username);
             if(req.body.username === result[i].username){
-                console.log('We are the same');
                 index = 1;
                 username = req.body.username;
                 res.send("Logged in as: " + req.body.username);
@@ -369,13 +374,6 @@ app.post('/signup', function(req, res){
     })
     
 })
-
-function getUserInfo(){
-    db.all('SELECT * FROM users WHERE username = $user', {$user: username},(error2, result2) => {
-        console.log(username);
-        console.log(result2);
-    })
-}
 
 
 
