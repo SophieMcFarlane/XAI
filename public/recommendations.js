@@ -157,7 +157,6 @@ $(function(){
 
         //Adding explanation to webpage
         $.get('/getTable', function(result){
-            console.log(result);
             var explanation = `We have grouped similar movies based on budget, popularity, revenue, vote average and number of votes. This movie is from the group of movies we think are most suited to you as you ranked ` + title + ` with ` + stars + ` stars. We also take into consideration if you rated our recommendations or not so please rate this recommendation below so we can give even better recommendations for you!`
             $('#m1Explanation').html(explanation);
             $('#m2Explanation').html(explanation);
