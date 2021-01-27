@@ -153,12 +153,16 @@ $(function(){
             }else{
                 title = "Beauty and the Beast";
             }
-        }
+        };
+
         //Adding explanation to webpage
-        var explanation = `This movie was chosen as you ranked ` + title + ` with ` + stars + ` stars. This movie was seen as similar based on budget, popularity, revenue, vote average and number of votes.`
-        $('#m1Explanation').html(explanation);
-        $('#m2Explanation').html(explanation);
-        $('#m3Explanation').html(explanation);
+        $.get('/getTable', function(result){
+            console.log(result);
+            var explanation = `We have grouped similar movies based on budget, popularity, revenue, vote average and number of votes. This movie is from the group of movies we think are most suited to you as you ranked ` + title + ` with ` + stars + ` stars. We also take into consideration if you rated our recommendations or not so please rate this recommendation below so we can give even better recommendations for you!`
+            $('#m1Explanation').html(explanation);
+            $('#m2Explanation').html(explanation);
+            $('#m3Explanation').html(explanation);
+        })
     })
 
 })
