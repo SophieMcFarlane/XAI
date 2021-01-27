@@ -10,26 +10,14 @@ const sqlite3 = require('sqlite3');
 const { response } = require('express');
 
 var collaborativeFilteringTable = [
-    [5, 1, 0, 0 ,0],
-    [5, 0, 1, 0, 0],
-    [5, 0, 0, 1, 0],
-    [5, 0, 0, 0, 1],
-    [1, 5, 0, 0, 0],
-    [0, 5, 1, 0, 0],
-    [0, 5, 0, 1, 0],
-    [0, 5, 0, 0, 1],
-    [1, 0, 5, 0, 0],
-    [0, 1, 5, 0, 0],
-    [0, 0, 5, 1, 0],
-    [0, 0, 5, 0, 1],
-    [1, 0, 0, 5, 0],
-    [0, 1, 0, 5, 0],
-    [0, 0, 1, 5, 0],
-    [0, 0, 0, 5, 1],
-    [1, 0, 0, 0, 5],
-    [0, 1, 0, 0, 5],
-    [0, 0, 1, 0, 5],
-    [0, 0, 0, 1, 5],
+    [1, 1, 1, 1, 1],
+    [1, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0],
+    [0, 0, 1, 1, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0]
 ];
 
 //1st Row is female
@@ -46,6 +34,8 @@ var age = "";
 var gender = "";
 var highestRatedIndex = 0;
 var lastCluster = 0;
+var row = 0;
+var column = 0;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -248,16 +238,35 @@ app.get('/getRecommendations2', function(req, res){
 
         }, (error, numberofRows) => {
             //Only gets called onced after all the above rows have been checked
+
+            //Getting the row of the collaborative filtering table based on age
+            if(age === "<18"){
+                row = 0;
+            }else if(age === "18-29"){
+                row = 1;
+            }else if(age === "30-44"){
+                row = 2;
+            }else if(age === "45+"){
+                row = 3;
+            }
+
+            if(gender === "male"){
+                row += 4;
+            }
             
+            //Find the highest rated group & updating table
             var highestRated = 0;
-            //Find the highest rated group
             for (var i=0; i<5; i++){
-                if(userRatings[i] > highestRated){
-                    highestRated = userRatings[i];
+                //Updating Collaborative Filtering Table with user ratings
+                collaborativeFilteringTable[row][i] = parseInt(userRatings[i]);
+                //Keeping track of highest rated group
+                if(collaborativeFilteringTable[row][i] > highestRated){
+                    highestRated = collaborativeFilteringTable[row][i];
                     highestRatedIndex = i;
                 }
             }
-            //Send the cluster that was rated highest
+
+            //Send the cluster that is rated highest & updating last cluster sent variable
             if(highestRatedIndex == 0){
                 db.all('SELECT * FROM cluster0_edited ORDER BY rank DESC', (error, result) => {
                     res.send(result);
@@ -286,12 +295,14 @@ app.get('/getRecommendations2', function(req, res){
             }
         })
     })
-
+    //POST request to get data on what the user rated the recommendations
     app.post('/postRecommendationData', function(req, res){
+        column = lastCluster;
+        //Updating the collaborative filtering table based on if they liked the recommendations or not
         if(req.body.data.charAt(2) == 'N'){
-            console.log('no');
+            collaborativeFilteringTable[row][column]--;
         }else if(req.body.data.charAt(2) == 'Y'){
-            console.log('yes');
+            collaborativeFilteringTable[row][column]++;
         }
     })
     
