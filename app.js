@@ -45,6 +45,7 @@ var username = "";
 var age = "";
 var gender = "";
 var highestRatedIndex = 0;
+var lastCluster = 0;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -261,24 +262,37 @@ app.get('/getRecommendations2', function(req, res){
                 db.all('SELECT * FROM cluster0_edited ORDER BY rank DESC', (error, result) => {
                     res.send(result);
                 });
+                lastCluster = 0;
             }else if(highestRatedIndex == 1){
                 db.all('SELECT * FROM cluster1_edited ORDER BY rank DESC', (error, result) => {
                     res.send(result);
                 });
+                lastCluster = 1;
             }else if(highestRatedIndex == 2){
                 db.all('SELECT * FROM cluster2_edited ORDER BY rank DESC', (error, result) => {
                     res.send(result);
                 });
+                lastCluster = 2
             }else if(highestRatedIndex == 3){
                 db.all('SELECT * FROM cluster3_edited ORDER BY rank DESC', (error, result) => {
                     res.send(result);
                 });
+                lastCluster = 3
             }else if(highestRatedIndex == 4){
                 db.all('SELECT * FROM cluster4_edited ORDER BY rank DESC', (error, result) => {
                     res.send(result);
                 });
+                lastCluster = 4;
             }
         })
+    })
+
+    app.post('/postRecommendationData', function(req, res){
+        if(req.body.data.charAt(2) == 'N'){
+            console.log('no');
+        }else if(req.body.data.charAt(2) == 'Y'){
+            console.log('yes');
+        }
     })
     
 })
