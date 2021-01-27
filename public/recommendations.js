@@ -3,7 +3,7 @@
 $(function(){
     var e = 0.3;
     var randomGreedy = Math.random();
-    $.get("/getRecommendations2", function(result){
+    $.get("/getRecommendations", function(result){
         var random = Math.floor(Math.random() * (6));
         //prints JSON into hello p placeholder
         //$('#hello').html(JSON.stringify(result));
