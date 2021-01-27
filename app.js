@@ -258,6 +258,11 @@ app.get('/getRatings', function(req, res){
     }
 }) 
 
+//GET request to get collaborative filtering table
+app.get('/getTable', function(req, res){
+    res.send(collaborativeFilteringTable);
+})
+
 //POST request to log user behaviour
 app.post('/postUserBehaviour', function(req, res){
     db.run('INSERT INTO user_behaviour (userId, button, timestamp) VALUES ($userId, $button, $timestamp)', {
