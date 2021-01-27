@@ -36,6 +36,7 @@ var highestRatedIndex = 0;
 var lastCluster = 0;
 var row = 0;
 var column = 0;
+var numberOfRecommendations = 0;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -254,18 +255,21 @@ app.get('/getRecommendations2', function(req, res){
                 row += 4;
             }
             
+            console.log('number of recommendations: ' + numberOfRecommendations);
             //Find the highest rated group & updating table
             var highestRated = 0;
             for (var i=0; i<5; i++){
-                //Updating Collaborative Filtering Table with user ratings
-                collaborativeFilteringTable[row][i] = parseInt(userRatings[i]);
+                if(numberOfRecommendations == 0){
+                    //Updating Collaborative Filtering Table with user ratings
+                    collaborativeFilteringTable[row][i] = parseInt(userRatings[i]);
+                }
                 //Keeping track of highest rated group
                 if(collaborativeFilteringTable[row][i] > highestRated){
                     highestRated = collaborativeFilteringTable[row][i];
                     highestRatedIndex = i;
                 }
             }
-
+        
             //Send the cluster that is rated highest & updating last cluster sent variable
             if(highestRatedIndex == 0){
                 db.all('SELECT * FROM cluster0_edited ORDER BY rank DESC', (error, result) => {
@@ -293,19 +297,20 @@ app.get('/getRecommendations2', function(req, res){
                 });
                 lastCluster = 4;
             }
+            numberOfRecommendations++;
         })
     })
-    //POST request to get data on what the user rated the recommendations
-    app.post('/postRecommendationData', function(req, res){
-        column = lastCluster;
-        //Updating the collaborative filtering table based on if they liked the recommendations or not
-        if(req.body.data.charAt(2) == 'N'){
-            collaborativeFilteringTable[row][column]--;
-        }else if(req.body.data.charAt(2) == 'Y'){
-            collaborativeFilteringTable[row][column]++;
-        }
-    })
-    
+})
+
+//POST request to get data on what the user rated the recommendations
+app.post('/postRecommendationData', function(req, res){
+    column = lastCluster;
+    //Updating the collaborative filtering table based on if they liked the recommendations or not
+    if(req.body.data.charAt(2) == 'N'){
+        collaborativeFilteringTable[row][column]--;
+    }else if(req.body.data.charAt(2) == 'Y'){
+        collaborativeFilteringTable[row][column]++;
+    }
 })
 
 //GET Request to get movie ratings
