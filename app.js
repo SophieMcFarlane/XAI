@@ -255,7 +255,6 @@ app.get('/getRecommendations2', function(req, res){
                 row += 4;
             }
             
-            console.log('number of recommendations: ' + numberOfRecommendations);
             //Find the highest rated group & updating table
             var highestRated = 0;
             for (var i=0; i<5; i++){
@@ -345,7 +344,6 @@ app.get('/getRatings', function(req, res){
 
 //POST request to log user behaviour
 app.post('/postUserBehaviour', function(req, res){
-    console.log(req.body.timestamp);
     db.run('INSERT INTO user_behaviour (userId, button, timestamp) VALUES ($userId, $button, $timestamp)', {
         $userId: username,
         $button: req.body.button,
