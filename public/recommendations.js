@@ -157,10 +157,20 @@ $(function(){
 
         //Adding explanation to webpage
         $.get('/getTable', function(result){
-            var explanation = `We have grouped similar movies based on budget, popularity, revenue, vote average and number of votes. This movie is from the group of movies we think are most suited to you as you ranked ` + title + ` with ` + stars + ` stars. We also take into consideration if you rated our recommendations or not so please rate this recommendation below so we can give even better recommendations for you!`
-            $('#m1Explanation').html(explanation);
-            $('#m2Explanation').html(explanation);
-            $('#m3Explanation').html(explanation);
+            var age = "";
+            var gender = "";
+            //Getting Age and Gender of user
+            $.get('/userAgeAndGender', function(result2){
+                age = result2[0];
+                gender = result2[1];
+
+                var explanation = `- We have grouped similar movies based on budget, popularity, revenue, vote average and number of votes. ` + `</br></br> - We take into consideration the IMbD ratings depending on age and gender.` + `</br> </br> - This movie is from the group of movies we think are most suited to you as you ranked ` + title + ` with ` + stars + ` stars and ` + gender + `s in the age bracket ` + age + ` also liked this movie.` + `</br> </br> - When you say you don’t like this recommendation, we are less likely to show similar movies like it. If you like the recommendation then we are more likely to show similar movies.` + `</br></br> - We put all this information into a big table and use this information to choose which movies get recommended to you.`
+                $('#m1Explanation').html(explanation);
+                $('#m2Explanation').html(explanation);
+                $('#m3Explanation').html(explanation);
+            });
+
+           
         })
     })
 
