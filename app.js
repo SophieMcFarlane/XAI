@@ -256,7 +256,16 @@ app.get('/getRatings', function(req, res){
             res.send(result);
         })
     }
-}) 
+})
+
+//GET request to get gender and age of user
+app.get('/userAgeAndGender', function(req, res){
+    db.all('SELECT * FROM users WHERE username = $user', {$user: username},(error2, resultUsers) => {
+        age = resultUsers[0].age;
+        gender = resultUsers[0].gender;
+        res.send([age, gender]);
+    })
+})
 
 //GET request to get collaborative filtering table
 app.get('/getTable', function(req, res){
