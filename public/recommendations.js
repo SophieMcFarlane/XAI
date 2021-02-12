@@ -156,6 +156,7 @@ $(function(){
         };
 
         //Adding explanation to webpage
+        //Not currently used
         $.get('/getTable', function(result){
             var age = "";
             var gender = "";
@@ -184,6 +185,7 @@ $(function(){
 // })
 
 //Buttons to see explanations for movies
+// Not currently used
 $(function(){
     //Once Movie 1 button is clicked
     $('#m1btn').click(function(){
