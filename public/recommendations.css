@@ -18,3 +18,11 @@
 .btn-yes-no{
     margin-left: 5px;
 }
+
+#getUserDatabase{
+    display: none;
+}
+
+#getUserBehaviourDatabase{
+    display: none;
+}
