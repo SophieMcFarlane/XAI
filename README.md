@@ -7,4 +7,4 @@ This system gave personal recommendations to the user based on past ratings of o
 This repository also contains the movie data manipulation - data used was from Harper, F. M. & Konstan, J. A. (2015), ‘The movielens datasets: History and context’, ACM
 Trans. Interact. Intell. Syst. 5(4).
 
-Final paper can be found in the repository 
+Final paper can be found in the repository and final implementation can be found here: https://explainableai.herokuapp.com/
